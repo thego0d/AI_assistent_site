@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="script.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+  <title></title>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#home" class="active">Главная</a>
+      <a href="#about">О проекте</a>
+      <a href="#services">План реализации</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+  <section id="home">
+    <div class="background-box">
+      <h1>Интеллектуальный помощник для адаптации пользователя в игровой среде</h1>
+      <p>
+        Интеллектуальный помощник для адаптации пользователя в игровой среде - это система, основанная на искусственном интеллекте, которая помогает новым и неопытным игрокам быстрее и эффективнее освоиться в игре. Такой помощник может предоставлять информацию о механиках игры, предлагать стратегии, давать советы по улучшению игрового опыта и помогать избегать распространенных ошибок.
+      </p>
+    </div>
+  </section>
+  <section id="about">
+    <div class="container reveal">
+      <h2></h2>
+      <div class="text-container">
+        <div class="text-box">
+          <h3>О ПРОДУКТЕ ПРОЕКТА</h3>
+          <p>Проблема:</p>
+          <p>– Трудности адаптации новых пользователей и оптимизации игрового опыта.</p>
+          <p>Описание проблемы:</p>
+          <p>– Высокий порог вхождения для новых игроков. Как правило, многие игры обладают довольно запутанным сюжетом, в таких играх содержится большое кол-во ресурсов и аспектов, начинающему пользователю очень трудно в этом разобраться.</p>
+          <p>Описание конечного продукта проекта:</p>
+          <p>– Микросервис.</p>
+          <p>Стадия проекта:</p>
+          <p>– TRL 4 Проект находится на стадии разработки, обучена и испытана тестовая модель нейронной сети.</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container reveal">
+      <h2 style="margin-bottom: 1em;">План реализации проекта</h2>
+        <head>
+          <link rel="stylesheet" href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css">
+          <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+        </head>
+        <body>
+          <div id="gantt_here"  style="width: 100%; height: 600px;"></div>
+          <script>
+
+            const projectData = {
+              data: [
+                { id: 1, text: "Этап 1: Основные принципы", start_date: "2023-01-01", duration: 30 },
+                { id: 2, text: "Описание технологии, потребности", start_date: "2023-01-01", duration: 7 },
+                { id: 3, text: "Сравнение альтернатив, выбор концепции", start_date: "2023-01-08", duration: 9 },
+                { id: 4, text: "Разработка концепции и дизайна", start_date: "2023-01-17", duration: 14 },
+                { id: 5, text: "Этап 2: Разработка прототипа", start_date: "2023-02-01", duration: 90 },
+                { id: 6, text: "Архитектура системы", start_date: "2023-02-01", duration: 21 },
+                { id: 7, text: "Разработка основных модулей", start_date: "2023-02-22", duration: 42 },
+                { id: 8, text: "Тестирование и отладка", start_date: "2023-04-01", duration: 27 },
+                { id: 9, text: "Запуск прототипа", start_date: "2023-04-25", duration: 7 },
+                { id: 10, text: "Этап 3: Разработка финального доработанного прототипа", start_date: "2023-05-02", duration: 120 },
+                { id: 11, text: "Разработка полной версии", start_date: "2023-05-02", duration: 49 },
+                { id: 12, text: "Тестирование и проверка безопасности", start_date: "2023-06-20", duration: 28 },
+                { id: 13, text: "Подготовка инфраструктуры", start_date: "2023-07-18", duration: 19 },
+                { id: 14, text: "Маркетинговая кампания", start_date: "2023-08-06", duration: 14 },
+                { id: 15, text: "Официальный запуск", start_date: "2023-08-20", duration: 10 }
+              ],
+              links: []
+            };
+
+
+            gantt.config.date_format = "%Y-%m-%d";
+            gantt.config.autosize = "xy";
+            gantt.config.drag_resize = true; // Отключаем возможность изменения длительности задачи перетаскиванием
+            gantt.config.scale_unit = "month"; // Шкала времени в месяцах
+            gantt.config.step = 1; // Шаг шкалы (1 месяц)
+            gantt.config.date_scale = "%F"; // Формат отображения даты на шкале времени
+
+            gantt.init("gantt_here");
+            gantt.parse(projectData);
+
+            // Функция для показа деталей задачи при клике на неё
+            gantt.attachEvent("onTaskClick", function(id, e) {
+              const task = gantt.getTask(id);
+              showDetails(task);
+              return true;
+            });
+
+            // Функция для скрытия деталей задачи
+            function hideDetails() {
+              document.getElementById("taskDetails").style.display = "none";
+            }
+
+            // Функция для показа деталей задачи
+            function showDetails(task) {
+              const details = document.getElementById("taskDetails");
+              details.style.display = "block";
+              details.style.left = `${gantt.getTaskPosition(task.id).x}px`;
+              details.style.top = `${gantt.getTaskPosition(task.id).y + 40}px`;
+              document.getElementById("taskName").value = task.text;
+              document.getElementById("taskDuration").value = task.duration; // Продолжительность в днях
+            }
+
+            // Функция для добавления задачи
+            function addTask() {
+              const taskName = document.getElementById("taskName").value;
+              const taskDuration = parseInt(document.getElementById("taskDuration").value);
+
+              if (!taskName || !taskDuration) {
+                alert("Введите название и продолжительность задачи.");
+                return;
+              }
+
+              const newTask = {
+                id: gantt.getTaskCount() + 1,
+                text: taskName,
+                start_date: new Date(gantt.getState().min_date),
+                duration: taskDuration
+              };
+
+              gantt.addTask(newTask);
+              hideDetails();
+            }
+
+            // Функция для удаления задачи
+            function deleteTask() {
+              const taskName = document.getElementById("taskName").value;
+
+              if (!taskName) {
+                alert("Выберите задачу для удаления.");
+                return;
+              }
+
+              const task = gantt.getTaskBy(function (task) {
+                return task.text === taskName;
+              });
+
+              if (task) {
+                gantt.deleteTask(task.id);
+                hideDetails();
+              } else {
+                alert("Задача не найдена.");
+              }
+            }
+          </script>
+        </body>
+  </section>
+
+  <section id="contact">
+    <div class="container reveal23">
+      <h2>Контактные данные</h2>
+      <h3>Руководитель проекта:</h3>
+      <h3>Воронин Евгений Александрович</h3>
+      <div class="text-container23">
+        <div class="text-box">
+          <h3>Даниил</h3>
+          <p>Телефон:</p>
+          <p>8 (929) 423-23-34</p>
+          <p>Почта:</p>
+          <p>daniilshaigerove@mail.ru</p>
+        </div>
+        <div class="text-box">
+          <h3>Ярослав</h3>
+          <p>Телефон:</p>
+          <p>8 (929) 423-23-34</p>
+          <p>Почта:</p>
+          <p>yaroslavribnov@mail.ru</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</html>
